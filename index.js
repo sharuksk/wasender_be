@@ -129,11 +129,11 @@ console.log(date.toISOString());
 const cron = require('node-cron');
 
 // Schedule the cron job to run every minute
-cron.schedule(' * * * * *', () => {
-  // cron.schedule('*/2 * * * * *', () => {
+// cron.schedule(' * * * * *', () => {
+//   // cron.schedule('*/2 * * * * *', () => {
   
-  Call();
-});
+//   Call();
+// });
 
 
 app.use(bodyParser.json({ limit: "50mb" }));

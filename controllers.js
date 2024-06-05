@@ -13,6 +13,24 @@ const qs = require("qs");
 const nodeBase64 = require("nodejs-base64-converter");
 
 
+exports.handleSignUp = async (req, res) => {
+  const client = await MongoClient.connect(url);
+  const db = client.db("WASender");
+  const collection = db.collection('users');
+  let mailList = await collection.findOne({email: req.body.email});
+  if(mailList)
+    {
+      await client.close();
+      return res.status(400).json({ message: 'User already exists' })
+    }
+    else{
+      await collection.insertOne({ email: req.body.email, password: req.body.password });
+      await client.close();
+      res.status(200).json({ message: 'User created successfully' });
+    }
+
+}
+
 //////////devices(instances)
 exports.handleSetDevices = async (req, res) => {
   try {

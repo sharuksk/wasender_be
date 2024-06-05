@@ -21,9 +21,13 @@ const {
   handleEditReply,
   ultramsgwebhook,
   schedulerSave,
+  handleSignUp,
 } = require("../controllers");
 const router = require("express").Router();
 
+
+//user
+router.post("/signup", handleSignUp);
 //devices
 router.post("/setdevice", handleSetDevices);
 router.post("/getdevice", handleGetDevices);
