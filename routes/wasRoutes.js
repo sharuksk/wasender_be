@@ -1,33 +1,46 @@
 const {
-  handleSetContacts,
-  handleGetContacts,
-  handleDeleteContacts,
-  handleSendMsg,
-  handleSetDevices,
-  handleGetDevices,
-  handleEditContacts,
-  handleImportBulk,
-  handleDuplicates,
-  handleLogMessages,
-  handleLogChats,
-  handleQrCode,
-  handleInstance,
-  handleInstanceChange,
-  handleInstanceDetails,
-  handleCreateReply,
-  handleGetReply,
-  handleDeleteReply,
-  handleIdReply,
-  handleEditReply,
-  ultramsgwebhook,
-  schedulerSave,
-  handleSignUp,
+    handleSetContacts,
+    handleGetContacts,
+    handleDeleteContacts,
+    handleSendMsg,
+    handleSetDevices,
+    handleGetDevices,
+    handleEditContacts,
+    handleImportBulk,
+    handleDuplicates,
+    handleLogMessages,
+    handleLogChats,
+    handleQrCode,
+    handleInstance,
+    handleInstanceChange,
+    handleInstanceDetails,
+    handleCreateReply,
+    handleGetReply,
+    handleDeleteReply,
+    handleIdReply,
+    handleEditReply,
+    ultramsgwebhook,
+    schedulerSave,
+    //Scheduler
+    handleCreateScheduler,
+    handleGetSch,
+    handleIdSch,
+    handleDeleteSch,
+    handleEditSch,
+
+    handleSignUp,
+    handleSignin,
+    handleGetDashboard,
 } = require("../controllers");
+
 const router = require("express").Router();
 
-
-//user
+// Auth
 router.post("/signup", handleSignUp);
+router.post("/signin", handleSignin);
+// Dashboard
+router.post("/getdashboard", handleGetDashboard);
+
 //devices
 router.post("/setdevice", handleSetDevices);
 router.post("/getdevice", handleGetDevices);
@@ -51,8 +64,14 @@ router.post("/createreply", handleCreateReply);
 router.post("/deletereply", handleDeleteReply);
 router.post("/idreply", handleIdReply);
 router.post("/editreply", handleEditReply);
-//
+//Scheduler
 router.post("/ultramsgwebhook", ultramsgwebhook);
 router.post("/schsendmsg", schedulerSave);
+
+router.post("/getsch", handleGetSch);
+router.post("/createsch", handleCreateScheduler);
+router.post("/deletesch", handleDeleteSch);
+router.post("/idsch", handleIdSch);
+router.post("/editsch", handleEditSch);
 
 module.exports = router;
